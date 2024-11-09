@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickser</title>
+    <link rel="icon" type="image/x-icon" href="/images/logo.jpeg">
+</head>
+<body style="display: flex; width: 100vw; height: 100vh; justify-content: center; align-items: center;">
+    <div style="text-align: center;">
+        <div id="counter">0</div>
+
+        <button id="click_button">Clicks</button>
+    </div>
+
+    <script>
+        function updateState(element, value) {
+            element.textContent = value;
+        }
+
+        let count = 0;
+
+        if (localStorage.getItem('count') !== null) {
+            count = localStorage.getItem('count');
+        }
+
+        let counter = document.getElementById('counter');
+        updateState(counter, count);
+
+        let clickButton = document.getElementById('click_button');
+        clickButton.addEventListener('click', function () {
+            localStorage.setItem('count', ++count);
+            updateState(counter, count);
+        });
+    </script>
+</body>
+</html>
